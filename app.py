@@ -1,10 +1,11 @@
 import streamlit as st
 import joblib
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
 
-# Load model
-model = joblib.load('Model_Random_Forest_Classifier.joblib')
+# Load model dan columns
+model_info = joblib.load('Model_Random_Forest_Classifier.joblib')
+model = model_info['model']
+columns = model_info['columns']
 
 # Judul app
 st.title("Prediksi Dropout Mahasiswa - Jaya Jaya Institut")
@@ -33,6 +34,9 @@ if submitted:
         'Age_at_enrollment': [age_at_enrollment],
         'Admission_grade': [admission_grade]
     })
+
+    # Sesuaikan dengan kolom waktu training (yang lain diisi 0)
+    data_input = data_input.reindex(columns=columns, fill_value=0)
 
     # Prediksi
     prediksi = model.predict(data_input)
