@@ -6,8 +6,6 @@ from sklearn.ensemble import RandomForestClassifier
 # Load model
 model = joblib.load('Model_Random_Forest_Classifier.joblib')
 
-joblib.dump(model_info, "Model_Random_Forest_Classifier.joblib")
-
 # Judul app
 st.title("Prediksi Dropout Mahasiswa - Jaya Jaya Institut")
 
