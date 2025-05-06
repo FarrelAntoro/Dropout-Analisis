@@ -4,13 +4,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 
 # Load model
-model = RandomForestClassifier(random_state=42)
-model.fit(X_train, y_train)
-
-model_info = {
-    "model": model,
-    "columns": X_train.columns.tolist()
-}
+model = joblib.load('Model_Random_Forest_Classifier.joblib')
 
 joblib.dump(model_info, "Model_Random_Forest_Classifier.joblib")
 
