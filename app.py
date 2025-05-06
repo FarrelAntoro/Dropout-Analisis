@@ -3,7 +3,12 @@ import joblib
 import pandas as pd
 
 # Load model
-model = joblib.load('Model_Random_Forest_Classifier.joblib')
+model_info = {
+    "model": model,
+    "columns": X_train.columns.tolist()
+}
+
+joblib.dump(model_info, "Model_Random_Forest_Classifier.joblib")
 
 # Judul app
 st.title("Prediksi Dropout Mahasiswa - Jaya Jaya Institut")
